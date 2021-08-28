@@ -1,11 +1,36 @@
-import React from "react";
+import { useState } from "react";
 import "../components/signin.css";
 import { IoSettings } from "react-icons/io5";
 import { IconContext } from "react-icons";
 
 function Signin() {
-  const handleSubmit = (event) => {
+  const [enteredEmail, setEnteredEmail] = useState("");
+  const [enteredPassword, setEnteredPassword] = useState("");
+  // const [enteredNameIsvalid, setenteredNameIsvalid] = useState(false);
+
+  const emailInputChangeHandler = (event) => {
+    setEnteredEmail(event.target.value);
+  };
+
+  const passwordInputChangeHandler = (event) => {
+    setEnteredPassword(event.target.value);
+  };
+
+  const formSubmitHandler = (event) => {
     event.preventDefault();
+
+    // if (enteredEmail.trim() === "") {
+    //   setenteredNameIsvalid(false);
+    //   return;
+    // }
+
+    // setenteredNameIsvalid(true);
+
+    console.log(enteredEmail);
+    console.log(enteredPassword);
+
+    setEnteredEmail("");
+    setEnteredPassword("");
   };
 
   return (
@@ -19,8 +44,8 @@ function Signin() {
               alt="kidsloop logo"
             />
             <h3>Sign In</h3>
-
-            <form onSubmit={handleSubmit}>
+            {/* form */}
+            <form onSubmit={formSubmitHandler}>
               <div className="signin-form-input">
                 <label htmlFor="email"></label>
                 <input
@@ -28,13 +53,20 @@ function Signin() {
                   type="email"
                   placeholder="Email or Phone *"
                   required
+                  onChange={emailInputChangeHandler}
+                  value={enteredEmail}
                 />
+                {/* {!enteredNameIsvalid && (
+                  <p className="error-text">Name must not be empty</p>
+                )} */}
                 <label htmlFor="password"></label>
                 <input
                   id="password"
                   type="password"
                   placeholder="Password *"
                   required
+                  onChange={passwordInputChangeHandler}
+                  value={enteredPassword}
                 />
               </div>
               <div className="link-section">
@@ -45,18 +77,17 @@ function Signin() {
                 <a href="/">Create an Account</a>
               </div>
             </form>
+            {/* form */}
           </div>
         </div>
         <div className="dropdown-section">
           <div className="dropdown">
             <IoSettings />
-            <select className="language-select">
-              <option selected value="select-language">
-                Select-Language
-              </option>
-              <option value="">Korean</option>
-              <option value="">English</option>
-              <option value="">Jamaican</option>
+            <select selected className="language-select">
+              <option value="select-language">Select Language</option>
+              <option value="Korean">Korean</option>
+              <option value="English">English</option>
+              <option value="Jamaican">Jamaican</option>
             </select>
           </div>
           {/* <p >
