@@ -6,7 +6,6 @@ import { IconContext } from "react-icons";
 function Signin() {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
-  // const [enteredNameIsvalid, setenteredNameIsvalid] = useState(false);
 
   const emailInputChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
@@ -18,13 +17,6 @@ function Signin() {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-
-    // if (enteredEmail.trim() === "") {
-    //   setenteredNameIsvalid(false);
-    //   return;
-    // }
-
-    // setenteredNameIsvalid(true);
 
     console.log(enteredEmail);
     console.log(enteredPassword);
@@ -56,9 +48,7 @@ function Signin() {
                   onChange={emailInputChangeHandler}
                   value={enteredEmail}
                 />
-                {/* {!enteredNameIsvalid && (
-                  <p className="error-text">Name must not be empty</p>
-                )} */}
+
                 <label htmlFor="password"></label>
                 <input
                   id="password"
@@ -67,6 +57,7 @@ function Signin() {
                   required
                   onChange={passwordInputChangeHandler}
                   value={enteredPassword}
+                  minLength="8"
                 />
               </div>
               <div className="link-section">
@@ -90,10 +81,6 @@ function Signin() {
               <option value="Jamaican">Jamaican</option>
             </select>
           </div>
-          {/* <p >
-            
-            
-          </p> */}
           <div className="dropdown-terms">
             <p>help</p>
             <p>privacy</p>
